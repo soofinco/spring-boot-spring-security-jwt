@@ -1,4 +1,4 @@
-package com.sofinco.solo.business.impl;
+package com.sofinco.solo.service.impl;
 
 
 
@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sofinco.solo.business.UserService;
+import com.sofinco.solo.service.UserService;
 import com.sofinco.solo.model.persistent.User;
 
 @Service
@@ -25,11 +25,9 @@ public class UserServiceImpl implements UserService {
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-    
-   
 
 
     @Override
@@ -49,6 +47,7 @@ public class UserServiceImpl implements UserService {
         if(domainObject.getPassword() != null){
             domainObject.setEncryptedPassword(passwordEncoder.encode(domainObject.getPassword()));
         }
+        System.out.println(domainObject.getEncryptedPassword());
         return userRepository.save(domainObject);
     }
     @Override

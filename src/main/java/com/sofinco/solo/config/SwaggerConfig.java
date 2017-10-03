@@ -14,11 +14,9 @@ import springfox.documentation.builders.*;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.spi.service.contexts.SecurityContext;
-import springfox.documentation.swagger.web.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import static com.google.common.collect.Lists.*;
-import java.util.*;
+
 
 
 
@@ -40,7 +38,7 @@ public class SwaggerConfig{
       .securitySchemes(newArrayList(apiKey()))
       .select().paths(PathSelectors.any())
           //.apis(RequestHandlerSelectors.any())  // If you want to list all the apis including springboots own
-          .apis(RequestHandlerSelectors.basePackage("com.sofrecom.hackathon.api"))
+          .apis(RequestHandlerSelectors.basePackage("com.sofinco.solo.rest"))
           .build()
       .pathMapping("/")
       .useDefaultResponseMessages(false)
@@ -50,22 +48,9 @@ public class SwaggerConfig{
     }
 
     private ApiKey apiKey() {
-        //return new ApiKey("Authorization", "api_key", "header");
         return new ApiKey("Authorization", "", "header");             // <<< === Create a Heaader (We are createing header named "Authorization" here)
     }
 
-    @Bean
-    SecurityConfiguration security() {
-        //return new SecurityConfiguration("emailSecurity_client", "secret", "Spring", "emailSecurity", "apiKey", ApiKeyVehicle.HEADER, "api_key", ",");
-        return new SecurityConfiguration("emailSecurity_client", "secret", "Spring", "emailSecurity", "", ApiKeyVehicle.HEADER, "", ",");
-    }
 
-    // This path will be called when swagger is loaded first time to get a token
-    /*
-    @Bean
-    public UiConfiguration uiConfig() {
-        return new UiConfiguration("session");
-    }
-    */
 
 }

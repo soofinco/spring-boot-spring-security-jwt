@@ -1,4 +1,4 @@
-package com.sofinco.solo.business;
+package com.sofinco.solo.service;
 
 import com.sofinco.solo.model.persistent.User;
 

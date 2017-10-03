@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- logback configuration. This file should be put in JONAS_BASE/conf directory or in a dedicated classpath module in JBoss to easily modify it -->
-<configuration debug="true" scan="true" scanPeriod="30 seconds">
-	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
-		<Target>System.out</Target>
+<configuration scan="true" scanPeriod="60 seconds">
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%date{ISO8601} %-5level [%thread] [%X{USERID}] [%X{JSESSIONID}] %logger{30}\(%line\) - %message%n</pattern>
+			<pattern>%-5p %d{MM/dd HH:mm:ss.SSS.SSS} [%t] %logger{36} %m%n
+			</pattern>
 		</encoder>
 	</appender>
-	<logger name="com.orange.ger" level="INFO" />
-	<logger name="org.hibernate" level="INFO" />
+
+	<logger name="org.hibernate.SQL" level="OFF" />
+	<logger name="org.hibernate.type" level="OFF" />
+	<logger name="org.hibernate" level="OFF" />
+
+
+	<!-- Framework logger -->
+	<logger name="net" level="ERROR">
+		<appender-ref ref="STDOUT" />
+	</logger>
+	<logger name="org" level="ERROR">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<logger name="ch" level="ERROR">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
 	<root level="INFO">
-		<appender-ref ref="stdout" />
+		<appender-ref ref="STDOUT" />
 	</root>
 </configuration>

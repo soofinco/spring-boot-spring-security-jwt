@@ -1,4 +1,4 @@
-package com.sofinco.solo.business;
+package com.sofinco.solo.service;
 
 import java.util.List;
 
