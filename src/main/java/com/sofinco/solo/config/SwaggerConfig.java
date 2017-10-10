@@ -1,10 +1,7 @@
 package com.sofinco.solo.config;
 
-import com.sun.org.apache.xerces.internal.parsers.SecurityConfiguration;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.*;
 
-import com.sofinco.solo.*;
 
 import org.joda.time.LocalDate;
 import org.springframework.context.annotation.*;
